@@ -1,0 +1,13 @@
+import os
+import glob
+import pandas as pd
+
+os.chdir(r'C:\Users\popescuv\Desktop\CBN Costin\luciana')
+
+extension = 'xlsx'
+all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
+
+combined_xls = pd.concat([pd.read_excel(f) for f in all_filenames])
+print(combined_xls)
+
+combined_xls.to_excel("HR.xls", index=False, encoding='utf-8-sig') 
