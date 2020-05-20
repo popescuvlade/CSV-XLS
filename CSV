@@ -1,0 +1,12 @@
+#Path of files to concatenate
+os.chdir(r'C:\Users\popescuv\Desktop\PowerBISh\S4 Dashboard\Consolidation data')
+
+#Define extension and capture all file names with that extenstion
+extension = 'csv'
+all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
+
+#Loop to concat reports
+combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames])
+
+#Write result in same folder as the ones in which files are
+combined_csv.to_csv("S4 Current.csv", index=False, encoding='utf-8-sig')
